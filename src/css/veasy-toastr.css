@@ -1,0 +1,105 @@
+.vtbox {
+  position: fixed;
+  right: 0;
+  margin: 5px;
+  width: 300px;
+  height: auto;
+}
+
+.vtbox .vtbox-item {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 5px;
+  background-color: #FFF;
+  box-shadow: 0px 1px 1px 0px #ABB0B1;
+}
+
+.vtbox .vtbox-item .vtbox-area-icon {
+  display: table-cell;
+  height: 100%;
+  width: 40px;
+  float: none !important;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.vtbox .vtbox-item .vtbox-area-icon > i {
+  font-size: 30px;
+}
+
+.vtbox .vtbox-item .vtbox-area-text {
+  margin-left: 10px;
+}
+
+.vtbox .vtbox-item .vtbox-area-text .vtbox-text-title {}
+
+.vtbox .vtbox-item .vtbox-area-text .vtbox-text-title > span.vtbox-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.vtbox .vtbox-item .vtbox-area-text .vtbox-text-message {}
+
+.vtbox .vtbox-item .vtbox-area-text .vtbox-text-message > span.vtbox-message {
+  font-size: smaller;
+}
+
+.vtbox-close {
+  position: relative;
+  right: -10px;
+  top: -10px;
+  font-size: smaller;
+  cursor: pointer;
+}
+
+.vtbox-item.default {
+  color: #777;
+  background-color: #F7F7F7;
+}
+
+.vtbox-item.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.vtbox-item.info {
+  color: #31708f;
+  background-color: #d9edf7;
+}
+
+.vtbox-item.warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+}
+
+.vtbox-item.error {
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+.vtbox-animate {}
+
+.vtbox-animate.ng-move,
+.vtbox-animate.ng-enter,
+.vtbox-animate.ng-leave {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.vtbox-animate.ng-leave.ng-leave-active,
+.vtbox-animate.ng-move,
+.vtbox-animate.ng-enter {
+  opacity: 0;
+  max-height: 0;
+}
+
+.vtbox-animate.ng-leave,
+.vtbox-animate.ng-move.ng-move-active,
+.vtbox-animate.ng-enter.ng-enter-active {
+  opacity: 1;
+  max-height: 40px;
+}
+
