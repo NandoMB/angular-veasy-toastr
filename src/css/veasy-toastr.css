@@ -1,9 +1,11 @@
 .vtbox {
   position: fixed;
+  top: 0;
   right: 0;
   margin: 5px;
   width: 300px;
   height: auto;
+  z-index: 99999;
 }
 
 .vtbox .vtbox-item {

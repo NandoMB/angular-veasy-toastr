@@ -3,13 +3,28 @@ angular.module('veasyToastr', [
     'veasyToastr.templates'
   ])
 
-  .directive('veasyToastr', ['$rootScope', '$animate', function ($rootScope, $animate) {
+  .provider('veasyToastr', function () {
+    var _config;
+
+    return {
+      setConfig: function (config) {
+        _config = config;
+      },
+      $get: function () {
+        return {
+          config: _config
+        };
+      }
+    };
+  })
+
+  .directive('veasyToastr', ['$animate', function (animate) {
     return {
       restrict: 'EA',
       replace: true,
       templateUrl: 'veasy-toastr.html',
       scope: {},
-      controller: function ($rootScope, $scope, $timeout) {
+      controller: function ($rootScope, $scope, $timeout, veasyToastr) {
 
         var init = function () {
           $scope.veasyToastr = { stack: [], removed: 0 };
@@ -25,7 +40,7 @@ angular.module('veasyToastr', [
         };
 
         var validateConfig = function () {
-          $scope.config = $rootScope.veasyToastrConfig ? angular.copy($rootScope.veasyToastrConfig) : {};
+          $scope.config = veasyToastr.config ? angular.copy(veasyToastr.config) : {};
 
           if (!$scope.config) $scope.config = {};
           if (!$scope.config.width) $scope.config.width = 300;

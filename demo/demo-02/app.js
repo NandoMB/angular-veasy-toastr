@@ -2,16 +2,16 @@ angular.module('app', [
     'veasyToastr'
   ])
 
-  .run(['$rootScope', function ($rootScope) {
-    $rootScope.veasyToastrConfig = {
-      width: 400,           // Default is: 300 (300px).
+  .config(['veasyToastrProvider', function (veasyToastrProvider) {
 
-      success: {            // You can personalize all the types: 'success', 'info', 'warning', 'error' and 'default'.
-        showIcon: false,    // Default is: true.
-        close: true,        // Default is: true.
-        timeout: 4000,      // Default is: 2000 (2000ms).
+    var config = {
+      width: 500,
+      success: {
+        showIcon: false,
+        close: true,
+        timeout: 10000,
         style: {
-          backgroundColor: '#FFF',
+          backgroundColor: '#F5F5F5',
           close: {
             fontSize: 20,
             color: '#777'
@@ -24,12 +24,15 @@ angular.module('app', [
             color: '#777'
           },
           message: {
-            fontSize: 10,
+            fontSize: 30,
             color: '#777'
           }
         }
       }
     };
+
+    veasyToastrProvider.setConfig(config);
+
   }])
 
   .controller('appCtrl', ['$rootScope', '$scope', '$window', '$timeout', 'veasyToastrNotify', function ($rootScope, $scope, $window, $timeout, veasyToastrNotify) {
