@@ -24,7 +24,8 @@ $ bower install angular-veasy-toastr --save
 angular.module('myModule', ['veasyToastr']);
 ```
 
-##### How to use
+### How to use
+###### You need inject 'veasyToastrNotify' in your controller, service, ...
 ```js
 angular.module('myModule', ['veasyToastr'])
   .controller('notificationCtrl', [ 'veasyToastrNotify', function (veasyToastrNotify) {
