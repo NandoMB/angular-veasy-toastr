@@ -24,7 +24,7 @@ angular.module('veasyToastr', [
       replace: true,
       templateUrl: 'veasy-toastr.html',
       scope: {},
-      controller: function ($rootScope, $scope, $timeout, veasyToastr) {
+      controller: ['$rootScope', '$scope', '$timeout', 'veasyToastr', function ($rootScope, $scope, $timeout, veasyToastr) {
 
         var init = function () {
           $scope.veasyToastr = { stack: [], removed: 0 };
@@ -134,7 +134,7 @@ angular.module('veasyToastr', [
         };
 
         init();
-      }
+      }]
     };
 
   }])
