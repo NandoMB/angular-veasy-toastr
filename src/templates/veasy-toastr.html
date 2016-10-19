@@ -9,7 +9,10 @@
         <span class="vtbox-title" ng-style="{'font-size': notification.style.title.fontSize + 'px', 'color': notification.style.title.color}">{{notification.title}}</span>
       </div>
       <div class="vtbox-text-message">
-        <span class="vtbox-message" ng-style="{'font-size': notification.style.message.fontSize + 'px', 'color': notification.style.message.color}">{{notification.message}}</span>
+        <span class="vtbox-message" ng-style="{'font-size': notification.style.message.fontSize + 'px', 'color': notification.style.message.color}">
+          <span ng-if="notification.sanitize">{{notification.message}}</span>
+          <span ng-if="!notification.sanitize" ng-bind-html="notification.message"></span>
+        </span>
       </div>
     </div>
   </div>
