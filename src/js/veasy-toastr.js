@@ -147,24 +147,24 @@ angular.module('veasyToastr', [
       }, 0);
     };
 
-    var _success = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'success', timeout: timeout });
+    var _success = function (title, message, timeout, skipSanitization) {
+      _notify({ title: title, message: message, type: 'success', timeout: timeout, sanitize: !skipSanitization });
     };
 
-    var _info = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'info', timeout: timeout });
+    var _info = function (title, message, timeout, skipSanitization) {
+      _notify({ title: title, message: message, type: 'info', timeout: timeout, sanitize: !skipSanitization });
     };
 
-    var _error = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'error', timeout: timeout });
+    var _error = function (title, message, timeout, skipSanitization) {
+      _notify({ title: title, message: message, type: 'error', timeout: timeout, sanitize: !skipSanitization });
     };
 
-    var _warning = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'warning', timeout: timeout });
+    var _warning = function (title, message, timeout, skipSanitization) {
+      _notify({ title: title, message: message, type: 'warning', timeout: timeout, sanitize: !skipSanitization });
     };
 
-    var _default = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'default', timeout: timeout });
+    var _default = function (title, message, timeout, skipSanitization) {
+      _notify({ title: title, message: message, type: 'default', timeout: timeout, sanitize: !skipSanitization });
     };
 
     return {
