@@ -1,4 +1,5 @@
 angular.module('veasyToastr', [
+    'ngSanitize',
     'ngAnimate',
     'veasyToastr.templates'
   ])
@@ -28,7 +29,6 @@ angular.module('veasyToastr', [
 
         var init = function () {
           $scope.veasyToastr = { stack: [], removed: 0 };
-
           validateConfig();
           registerEvents();
         };
@@ -44,6 +44,7 @@ angular.module('veasyToastr', [
 
           if (!$scope.config) $scope.config = {};
           if (!$scope.config.width) $scope.config.width = 300;
+          if (!$scope.config.allowHtml) $scope.config.allowHtml = false;
 
           if (!$scope.config.success) $scope.config.success = {};
           if (!$scope.config.success.icon) $scope.config.success.icon = 'fa-check-circle';
@@ -113,12 +114,10 @@ angular.module('veasyToastr', [
 
         var add = function (notification) {
           var index = $scope.veasyToastr.stack.length;
-
-          if (index == 0)
+          if (index === 0) {
             $scope.veasyToastr.removed = 0;
-
+          }
           $scope.veasyToastr.stack.push(notification);
-
           $timeout(function () {
             if ((index - $scope.veasyToastr.removed) <= 0) {
               $scope.veasyToastr.stack.splice(0, 1);
@@ -139,7 +138,7 @@ angular.module('veasyToastr', [
 
   }])
 
-  .service('veasyToastrNotify', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+  .service('veasyToastrNotify', ['$rootScope', '$timeout', '$sce', function ($rootScope, $timeout, $sce) {
 
     var _notify = function (notification) {
       $timeout(function () {
@@ -147,24 +146,24 @@ angular.module('veasyToastr', [
       }, 0);
     };
 
-    var _success = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'success', timeout: timeout });
+    var _success = function (title, message, timeout, allowHtml) {
+      _notify({ title: title, message: message, type: 'success', timeout: timeout, allowHtml: allowHtml });
     };
 
-    var _info = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'info', timeout: timeout });
+    var _info = function (title, message, timeout, allowHtml) {
+      _notify({ title: title, message: message, type: 'info', timeout: timeout, allowHtml: allowHtml });
     };
 
-    var _error = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'error', timeout: timeout });
+    var _error = function (title, message, timeout, allowHtml) {
+      _notify({ title: title, message: message, type: 'error', timeout: timeout, allowHtml: allowHtml });
     };
 
-    var _warning = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'warning', timeout: timeout });
+    var _warning = function (title, message, timeout, allowHtml) {
+      _notify({ title: title, message: message, type: 'warning', timeout: timeout, allowHtml: allowHtml });
     };
 
-    var _default = function (title, message, timeout) {
-      _notify({ title: title, message: message, type: 'default', timeout: timeout });
+    var _default = function (title, message, timeout, allowHtml) {
+      _notify({ title: title, message: message, type: 'default', timeout: timeout, allowHtml: allowHtml });
     };
 
     return {

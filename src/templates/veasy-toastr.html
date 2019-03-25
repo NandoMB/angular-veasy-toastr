@@ -6,10 +6,12 @@
     <div class="vtbox-area-text">
       <div class="vtbox-text-title">
         <i ng-if="notification.close" ng-click="close(notification)" class="fa fa-times pull-right vtbox-close" ng-style="{'font-size': notification.style.close.fontSize + 'px', 'color': notification.style.close.color}"></i>
-        <span class="vtbox-title" ng-style="{'font-size': notification.style.title.fontSize + 'px', 'color': notification.style.title.color}">{{notification.title}}</span>
+        <span ng-if="!notification.allowHtml" class="vtbox-title" ng-style="{'font-size': notification.style.title.fontSize + 'px', 'color': notification.style.title.color}" ng-bind="notification.title"></span>
+        <span ng-if="notification.allowHtml" class="vtbox-title" ng-style="{'font-size': notification.style.title.fontSize + 'px', 'color': notification.style.title.color}" ng-bind-html="notification.title"></span>
       </div>
       <div class="vtbox-text-message">
-        <span class="vtbox-message" ng-style="{'font-size': notification.style.message.fontSize + 'px', 'color': notification.style.message.color}">{{notification.message}}</span>
+        <span ng-if="!notification.allowHtml" class="vtbox-message" ng-style="{'font-size': notification.style.message.fontSize + 'px', 'color': notification.style.message.color}" ng-bind="notification.message"></span>
+        <span ng-if="notification.allowHtml" class="vtbox-message" ng-style="{'font-size': notification.style.message.fontSize + 'px', 'color': notification.style.message.color}" ng-bind-html="notification.message"></span>
       </div>
     </div>
   </div>

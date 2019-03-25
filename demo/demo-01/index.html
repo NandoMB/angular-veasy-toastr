@@ -8,11 +8,6 @@
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="../../dist/css/veasy-toastr.min.css">
-
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-animate/angular-animate.js"></script>
-  <script src="../../dist/js/veasy-toastr-tpls.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../dist/js/veasy-toastr.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body ng-controller="appCtrl">
   <veasy-toastr></veasy-toastr>
@@ -39,6 +34,13 @@
                     <input type="number" class="form-control" id="timeout" ng-model="notification.timeout">
                   </div>
                   <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" ng-model="notification.allowHtml"> Allow HTML
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <button class="btn btn-success" ng-click="notifySuccess(notification)">Success</button>
                     <button class="btn btn-info" ng-click="notifyInfo(notification)">Info</button>
                     <button class="btn btn-warning" ng-click="notifyWarning(notification)">Warning</button>
@@ -54,6 +56,11 @@
     </div>
   </div>
 
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
   <script src="app.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../dist/js/veasy-toastr-tpls.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../dist/js/veasy-toastr.min.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
