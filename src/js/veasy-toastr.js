@@ -108,6 +108,7 @@ angular.module('veasyToastr', [
           notification.showIcon = config.showIcon;
           notification.close = config.close;
           notification.timeout = notification.timeout || config.timeout;
+          notification.allowHtml = $scope.config.allowHtml;
           notification.style = config.style;
           return notification;
         };
